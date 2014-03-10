@@ -6,7 +6,7 @@ Demo app contains code for displaying responses to three qualitative questions i
 
 This tool is powered by R + Shiny.
 
-![app screenshot](../blob/master/app_screenshot.png?raw=true)
+![app screenshot](https://github.com/linkalis/shiny-qualitativesurveytool/blob/master/app_screenshot.png?raw=true)
 
 
 
