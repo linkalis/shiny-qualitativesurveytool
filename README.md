@@ -16,9 +16,9 @@ What you need
 
 
 ### .CSV Data Specifications
-* Rows: each row represents one respondent
-* Data Columns: columns each represent a question from the survey, and contain qualitative responses from each respondent; formatted as text strings
-* Demographic Sort/"Role" Column: file contains one demographic column against which you would like to be able to sort reponses; formatted as text strings (For example: democrat vs. republican; male vs. female; freshman vs. sophomore vs. junior vs. senior)
+* **Rows:** each row represents one respondent
+* **Data Columns:** columns each represent a question from the survey, and contain qualitative responses from each respondent; formatted as text strings
+* **Demographic Sort/"Role" Column:** file contains one demographic column against which you would like to be able to sort reponses; formatted as text strings (For example: democrat vs. republican; male vs. female; freshman vs. sophomore vs. junior vs. senior)
 
 
 
@@ -26,7 +26,7 @@ How to run
 ----------
 1. Install and run R.  From within R console, load Shiny library: `library(shiny)`
 2. Save the 'shiny-qualitativesurveytool' app directory and its contents within your R working directory.  Note: If you are unsure of where your R working directory is, check `getwd()` from within the R console.
-3. Run the app from the R console by typing: `runApp("shiny-qualitativesurveytool/")`
+3. Run the app from the R console: `runApp("shiny-qualitativesurveytool/")`
 4. Wait a few seconds.  Shiny server process should start within your R console, and app should launch locally within your browser.
 5. Go nuts searching and sorting the sample data! 
 
@@ -35,18 +35,18 @@ How to run
 How to tweak
 ------------
 ### Adapt for your data
-Read through the code comments for instructions on how to alter the code to point to your own .CSV data file.  You will need to adjust some code in both the *global.R* and the *ui.R* files.  PAY PARTICULAR ATTENTION TO THE INSTRUCTIONS IN ALL CAPS--these are the 'bare minimum' adjustments you need to make to get the app to run using your own data.   
+Read through the code comments for instructions on how to alter the code to point to your own .CSV data file.  You will need to adjust some code in both the **global.R** and the **ui.R** files.  PAY PARTICULAR ATTENTION TO THE INSTRUCTIONS IN ALL CAPS--these are the 'bare minimum' adjustments you need to make to get the app to run using your own data.   
 
 
 ### Add an additional survey question to the app
 To add additional survey questions(s) into the app for display, you will need to copy some snippets of the existing code, and paste and tweak them to incorporate the additional question numbers.  The sections you need to tweak are labeled with letters (a)-(e) in the code comments.  Let's say, for example, that you want to add a fourth question to the app.  At the respective code sections, insert the following:
 
-*global.R*
-(a) Define the column number for the question: `names(surveydata)[#] <- "Q4"`
-(b) Add corpus processing code for the question: `Q4Corpus <- cleanCorpus(surveydata$Q4)`
+**global.R**
+* (a) Define the column number for the question: `names(surveydata)[#] <- "Q4"`
+* (b) Add corpus processing code for the question: `Q4Corpus <- cleanCorpus(surveydata$Q4)`
 
-*server.R*
-(c) Add server processing code for the question:
+**server.R**
+* (c) Add server processing code for the question:
 
 ```
 output$Q4Table <- renderTable({
@@ -72,14 +72,15 @@ output$Q4Table <- renderTable({
   })
   ```
 
-*ui.R*
-(d) Add word count display to the "Word Counts" tabPanel: 
+**ui.R**
+
+* (d) Add word count display to the "Word Counts" tabPanel: 
 ```
 h4("Q4:"),
 p(textOutput("Q4WordCount"))
 ```
 
-(e) Add tabPanel display to the the mainPanel:
+* (e) Add tabPanel display to the the mainPanel:
 ```
 tabPanel("Q4",
         h3("Q4 question text"),
