@@ -6,6 +6,8 @@ Demo app contains code for displaying responses to three qualitative questions i
 
 This tool is powered by R + Shiny.
 
+![app screenshot][app_screenshot.png]
+
 
 
 What you need
@@ -15,7 +17,7 @@ What you need
 * Shiny library installed in R
 
 
-### .CSV Data Specifications
+### .CSV data file specifications
 * **Rows:** each row represents one respondent
 * **Data Columns:** columns each represent a question from the survey, and contain qualitative responses from each respondent; formatted as text strings
 * **Demographic Sort/"Role" Column:** file contains one demographic column against which you would like to be able to sort reponses; formatted as text strings (For example: democrat vs. republican; male vs. female; freshman vs. sophomore vs. junior vs. senior)
