@@ -8,7 +8,7 @@ This tool is powered by R + Shiny.
 
 ![app screenshot](https://github.com/linkalis/shiny-qualitativesurveytool/blob/master/app_screenshot.png?raw=true)
 
-
+-----
 
 What you need
 -------------
