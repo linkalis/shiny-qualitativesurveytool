@@ -79,3 +79,15 @@ Q2Corpus <- cleanCorpus(surveydata$Q2)
 Q3Corpus <- cleanCorpus(surveydata$Q3)
 
 # (b) Add corpus processing code for additional questions here, using same format as above.
+
+
+
+
+#################################
+## CREATE DOCUMENT-TERM MATRIX ##
+#################################
+FullCorpus <- c(Q1Corpus, Q2Corpus, Q3Corpus) ## (c) Add additional question corpora (for example: "Q4Corpus") at the end of this list, separated by commas
+FullCorpus <- tm_map(FullCorpus, tolower)
+FullCorpus <- tm_map(FullCorpus, removePunctuation)
+FullCorpus <- tm_map(FullCorpus, removeWords, stopwords("english"))
+FullDTM <- DocumentTermMatrix(FullCorpus)

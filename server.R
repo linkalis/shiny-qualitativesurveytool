@@ -24,6 +24,18 @@ shinyServer(function(input, output) {
     SearchTerm()
   })
   
+  ## Calculate "related terms" that frequently co-occur with the user-defined search term.  (This calculation is based on 
+  ## correlations within the document-term matrix (DTM) of the full response set, which is defined in the global.R file.)  
+  ## The default correlation level here is 0.5.  This means that, for whatever search term the user inputs, the function
+  ## below computes a list of terms that co-occur with the search term at least 50% of the time across all survey
+  ## responses.
+  ## Note: This correlation level may be too stringent for large data sets.  For data sets with a large number of responses,
+  ## you may want to lower the correlation limit to somewhere between 0.2 - 0.3 to yield more results.  
+  output$relatedTerms <- renderText({
+    relatedterms <- try(findAssocs(FullDTM, SearchTerm(), 0.5))
+    names(relatedterms)
+  })
+  
   
   ########
   ## Q1 ## 
@@ -46,7 +58,7 @@ shinyServer(function(input, output) {
   ## of words in the cloud, add or remove hex-formatted colors from the list in 'col='.  To change the proportion of words
   ## that are rotated 90 degrees, change the 'rot.per=' variable. 
   output$Q1Cloud <- renderPlot({
-    wordcloud(Q1Corpus, scale=c(4,1), min.freq=5, max.words=120, random.order=TRUE, random.color=FALSE, rot.per=.25, colors=c("#FFCC33", "#7A0019"), ordered.colors=FALSE, use.r.layout=FALSE)
+    wordcloud(Q1Corpus, scale=c(4,1), min.freq=5, max.words=120, random.order=TRUE, random.color=FALSE, rot.per=.25, colors=c("#FFCC33", "#7A0019"), ordered.colors=FALSE, use.r.layout=FALSE)  
   })
   
   ## If user has entered a word/phrase in the search box within the UI, then count the number of survey responses to Q1
@@ -120,7 +132,7 @@ shinyServer(function(input, output) {
   ## ADDITIONAL QUESTIONS ##
   ##########################
   
-  ## (c) Add server processing code for additional questions here, using the same format as above.
+  ## (d) Add server processing code for additional questions here, using the same format as above.
   
   
 })

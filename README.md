@@ -41,14 +41,15 @@ Read through the code comments for instructions on how to alter the code to poin
 
 
 ### Add an additional survey question to the app
-To add additional survey questions(s) into the app for display, you will need to copy some snippets of the existing code, and paste and tweak them to incorporate the additional question numbers.  The sections you need to tweak are labeled with letters (a)-(e) in the code comments.  Let's say, for example, that you want to add a fourth question to the app.  At the respective code sections, insert the following:
+To add additional survey questions(s) into the app for display, you will need to copy some snippets of the existing code, and paste and tweak them to incorporate the additional question numbers.  The sections you need to tweak are labeled with letters (a)-(f) in the code comments.  Let's say, for example, that you want to add a fourth question to the app.  At the respective code sections, insert the following:
 
 **global.R**
 * (a) Define the column number for the question: `names(surveydata)[#] <- "Q4"`
-* (b) Add corpus processing code for the question: `Q4Corpus <- cleanCorpus(surveydata$Q4)`
+* (b) Add corpus processing code for the additional question: `Q4Corpus <- cleanCorpus(surveydata$Q4)`
+* (c) Add additional question corpora names (for example: "Q4Corpus") at the end of the list, separated by commas
 
 **server.R**
-* (c) Add server processing code for the question:
+* (d) Add server processing code for the additional question:
 
 ```
 output$Q4Table <- renderTable({
@@ -76,13 +77,13 @@ output$Q4Table <- renderTable({
 
 **ui.R**
 
-* (d) Add word count display to the "Word Counts" tabPanel: 
+* (e) Add word count display to the "Word Counts" tabPanel: 
 ```
 h4("Q4:"),
 p(textOutput("Q4WordCount"))
 ```
 
-* (e) Add tabPanel display to the the mainPanel:
+* (f) Add tabPanel display to the the mainPanel:
 ```
 tabPanel("Q4",
         h3("Q4 question text"),

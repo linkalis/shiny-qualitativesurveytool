@@ -32,7 +32,7 @@ shinyUI(pageWithSidebar(
                
                ),
       
-      tabPanel("Word Counts",
+      tabPanel("Search Word Stats",
                
                p("Number of responses in which"),
                h4(textOutput("searched")),
@@ -45,10 +45,13 @@ shinyUI(pageWithSidebar(
                p(textOutput("Q2WordCount")),
                
                h4("Q3:"),
-               p(textOutput("Q3WordCount"))
+               p(textOutput("Q3WordCount")),
                
-               ## (d) Add word count(s) for additional questions here, using the same format as above.
+               ## (e) Add word count(s) for additional questions here, using the same format as above.
                
+               
+               h4("Related terms:"),
+               p(textOutput("relatedTerms"))
                )
       )
     ),
@@ -71,7 +74,7 @@ shinyUI(pageWithSidebar(
                plotOutput("Q3Cloud"), 
                tableOutput("Q3Table"))
       
-      ## (e) Add tabPanel(s) for additional questions here, using same format as above.
+      ## (f) Add tabPanel(s) for additional questions here, using same format as above.
     )
   )
 ))
