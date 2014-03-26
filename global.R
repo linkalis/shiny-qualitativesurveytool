@@ -1,7 +1,7 @@
 ######################################
 ## QUALITATIVE SURVEY ANALYSIS TOOL ##
 ######################################
-## Version: 1.0
+## https://github.com/linkalis/shiny-qualitativesurveytool
 ## Author: Alison Link, linkalis@gmail.com
 
 
