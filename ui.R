@@ -21,7 +21,7 @@ shinyUI(pageWithSidebar(
                checkboxGroupInput("roleslist", h3("Filter by:"),
                                    c("Democrat" = "Dem",
                                      "Republican" = "Rep",
-                                     "Other" = "Other"
+                                     "Other" = ""
                                    ),
                                   ## DEFINE WHICH ROLES YOU WANT CHECKED BY DEFAULT for display when the app first loads.
                                    selected = c("Democrat", "Republican", "Other")),
