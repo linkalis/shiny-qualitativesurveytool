@@ -68,7 +68,7 @@ surveydata$Role[surveydata$Role==""] <- "Other"
 ## remove punctuation.  These corpora are then used to render wordcloud plots in server.R file.
 cleanCorpus <- function(col){
   cleanedCorpus <- Corpus(VectorSource(col))
-  cleanedCorpus <- tm_map(cleanedCorpus, tolower)
+  cleanedCorpus <- tm_map(cleanedCorpus, content_transformer(tolower))
   cleanedCorpus <- tm_map(cleanedCorpus, removeWords, stopwords("english"))
   cleanedCorpus <- tm_map(cleanedCorpus, removePunctuation)
   return(cleanedCorpus)
@@ -87,7 +87,7 @@ Q3Corpus <- cleanCorpus(surveydata$Q3)
 ## CREATE DOCUMENT-TERM MATRIX ##
 #################################
 FullCorpus <- c(Q1Corpus, Q2Corpus, Q3Corpus) ## (c) Add additional question corpora (for example: "Q4Corpus") at the end of this list, separated by commas
-FullCorpus <- tm_map(FullCorpus, tolower)
+FullCorpus <- tm_map(FullCorpus, content_transformer(tolower))
 FullCorpus <- tm_map(FullCorpus, removePunctuation)
 FullCorpus <- tm_map(FullCorpus, removeWords, stopwords("english"))
 FullDTM <- DocumentTermMatrix(FullCorpus)
