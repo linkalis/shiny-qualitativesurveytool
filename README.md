@@ -13,7 +13,7 @@ This tool is powered by R + Shiny.
 What you need
 -------------
 * .CSV file containing survey responses
-* R (version 2.15.3)
+* R (version 3.1.2)
 * Shiny library installed in R
 
 
